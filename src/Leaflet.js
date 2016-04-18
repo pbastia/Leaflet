@@ -1,3 +1,4 @@
+console.log("Loading Leaflet");
 
 var L = {
 	version: '1.0.0-rc.1'
@@ -13,7 +14,6 @@ function expose() {
 
 	window.L = L;
 
-	console.log("Loading Leaflet");
 }
 
 // define Leaflet for Node module pattern loaders, including Browserify
