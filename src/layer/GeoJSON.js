@@ -143,6 +143,8 @@ L.extend(L.GeoJSON, {
 	// functions if provided as options.
 	geometryToLayer: function (geojson, options) {
 
+		console.log(options);
+
 		var geometry = geojson.type === 'Feature' ? geojson.geometry : geojson,
 		    coords = geometry ? geometry.coordinates : null,
 		    layers = [],
