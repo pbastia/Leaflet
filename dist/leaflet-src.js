@@ -1,5 +1,5 @@
 /*
- Leaflet 1.0.0-rc.1 (82133fd), a JS library for interactive maps. http://leafletjs.com
+ Leaflet 1.0.0-rc.1 (f68863d), a JS library for interactive maps. http://leafletjs.com
  (c) 2010-2015 Vladimir Agafonkin, (c) 2010-2011 CloudMade
 */
 (function (window, document, undefined) {console.log('Loading Leaflet');
@@ -8899,8 +8899,6 @@ L.extend(L.GeoJSON, {
 	// functions if provided as options.
 	geometryToLayer: function (geojson, options) {
 
-		console.log(options);
-
 		var geometry = geojson.type === 'Feature' ? geojson.geometry : geojson,
 		    coords = geometry ? geometry.coordinates : null,
 		    layers = [],
@@ -8914,6 +8912,7 @@ L.extend(L.GeoJSON, {
 
 		switch (geometry.type) {
 		case 'Point':
+			console.log(options);
 			latlng = coordsToLatLng(coords);
 			return pointToLayer ? pointToLayer(geojson, latlng, options) : new L.Marker(latlng, options);
 

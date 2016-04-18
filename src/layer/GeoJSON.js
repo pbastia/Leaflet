@@ -143,8 +143,6 @@ L.extend(L.GeoJSON, {
 	// functions if provided as options.
 	geometryToLayer: function (geojson, options) {
 
-		console.log(options);
-
 		var geometry = geojson.type === 'Feature' ? geojson.geometry : geojson,
 		    coords = geometry ? geometry.coordinates : null,
 		    layers = [],
@@ -158,6 +156,7 @@ L.extend(L.GeoJSON, {
 
 		switch (geometry.type) {
 		case 'Point':
+			console.log(options);
 			latlng = coordsToLatLng(coords);
 			return pointToLayer ? pointToLayer(geojson, latlng, options) : new L.Marker(latlng, options);
 
