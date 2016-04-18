@@ -1,5 +1,5 @@
 /*
- Leaflet 1.0.0-rc.1 (f68863d), a JS library for interactive maps. http://leafletjs.com
+ Leaflet 1.0.0-rc.1 (df47ef2), a JS library for interactive maps. http://leafletjs.com
  (c) 2010-2015 Vladimir Agafonkin, (c) 2010-2011 CloudMade
 */
 (function (window, document, undefined) {console.log('Loading Leaflet');
@@ -5452,6 +5452,7 @@ L.Marker = L.Layer.extend({
 	},
 
 	onAdd: function (map) {
+		console.log(this.options.pane);
 		this._zoomAnimated = this._zoomAnimated && map.options.markerZoomAnimation;
 
 		this._initIcon();

@@ -98,6 +98,7 @@ L.Marker = L.Layer.extend({
 	},
 
 	onAdd: function (map) {
+		console.log(this.options.pane);
 		this._zoomAnimated = this._zoomAnimated && map.options.markerZoomAnimation;
 
 		this._initIcon();
