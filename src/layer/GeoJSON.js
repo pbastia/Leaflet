@@ -157,12 +157,12 @@ L.extend(L.GeoJSON, {
 		switch (geometry.type) {
 		case 'Point':
 			latlng = coordsToLatLng(coords);
-			return pointToLayer ? pointToLayer(geojson, latlng) : new L.Marker(latlng);
+			return pointToLayer ? pointToLayer(geojson, latlng, options) : new L.Marker(latlng, options);
 
 		case 'MultiPoint':
 			for (i = 0, len = coords.length; i < len; i++) {
 				latlng = coordsToLatLng(coords[i]);
-				layers.push(pointToLayer ? pointToLayer(geojson, latlng) : new L.Marker(latlng));
+				layers.push(pointToLayer ? pointToLayer(geojson, latlng, options) : new L.Marker(latlng, options));
 			}
 			return new L.FeatureGroup(layers);
 
