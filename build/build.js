@@ -70,13 +70,30 @@ function loadSilently(path) {
 	}
 }
 
-function bundleFiles(files, copy) {
+function bundleFiles(files, copy, version) {
 	var bundle = new MagicString.Bundle();
 
 	for (var i = 0, len = files.length; i < len; i++) {
+
+		var content = new MagicString( fs.readFileSync(files[i], 'utf8') + '\n\n' );
+
+		// Replace the L.version variable in src/Leaflet.js with the string prepared
+		// in the jakefile
+		if (files[i] === 'src/Leaflet.js') {
+			var versionMatch = (new RegExp('version: \'.*\'')).exec(content.toString()),
+			    versionStart = versionMatch.index,
+			    versionLength = versionMatch ? versionMatch[0].length : 0;
+
+			if (versionLength) {
+				content.overwrite(versionStart, versionStart + versionLength,
+					'version: ' + JSON.stringify(version)
+				);
+			}
+		}
+
 		bundle.addSource({
 			filename: files[i],
-			content: new MagicString( fs.readFileSync(files[i], 'utf8') + '\n\n' )
+			content: content
 		});
 	}
 
@@ -106,7 +123,7 @@ exports.build = function (callback, version, compsBase32, buildName) {
 	    srcFilename = filenamePart + '-src.js',
 	    mapFilename = filenamePart + '-src.map',
 
-	    bundle = bundleFiles(files, copy),
+	    bundle = bundleFiles(files, copy, version),
 	    newSrc = bundle.toString() + '\n//# sourceMappingURL=' + mapFilename,
 
 	    oldSrc = loadSilently(srcPath),
