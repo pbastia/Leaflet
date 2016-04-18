@@ -1,4 +1,4 @@
-console.log("Loading Leaflet");
+console.log('Loading Leaflet');
 
 var L = {
 	version: '1.0.0-rc.1'

@@ -1,8 +1,9 @@
 /*
- Leaflet 1.0.0-rc.1 (a626826), a JS library for interactive maps. http://leafletjs.com
+ Leaflet 1.0.0-rc.1 (c90e2d6), a JS library for interactive maps. http://leafletjs.com
  (c) 2010-2015 Vladimir Agafonkin, (c) 2010-2011 CloudMade
 */
-(function (window, document, undefined) {
+(function (window, document, undefined) {console.log('Loading Leaflet');
+
 var L = {
 	version: '1.0.0-rc.1'
 };
@@ -16,6 +17,7 @@ function expose() {
 	};
 
 	window.L = L;
+
 }
 
 // define Leaflet for Node module pattern loaders, including Browserify
